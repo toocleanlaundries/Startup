@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TooClean - Online Laundry Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #9ad5f9, #5d9cec);
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: rgba(85, 85, 85, 0.8);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .services {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .service {
+            margin: 10px;
+        }
+        .service img {
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .service p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .service h3 {
+            margin-top: 10px;
+        }
+        .contact-form {
+            margin-top: 20px;
+            text-align: left; /* Align the form inputs to the left */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form label {
+            width: 100%;
+            max-width: 300px; /* Adjust the max-width as needed */
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .contact-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TooClean - Online Laundry Service</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container" id="home">
+        <h2>Welcome to Our Online Laundry Service</h2>
+        <p>We provide convenient and reliable laundry services. Contact us today to schedule your laundry pickup and delivery!</p>
+        <div class="services">
+            <div class="service">
+                <img src="washing-machine.jpg" alt="Washing Machine">
+                <h3>Machine Wash</h3>
+                <p>Get your clothes cleaned using our advanced washing machines.</p>
+            </div>
+            <div class="service">
+                <img src="dry-cleaning.jpg" alt="Dry Cleaning">
+                <h3>Dry Cleaning</h3>
+                <p>Professional dry cleaning services to keep your garments looking like new.</p>
+            </div>
+            <div class="service">
+                <img src="ironing.jpg" alt="Ironing">
+                <h3>Ironing</h3>
+                <p>Perfectly pressed clothes for a crisp and neat appearance.</p>
+            </div>
+            <div class="service">
+                <img src="laundry-delivery.jpg" alt="Laundry Delivery">
+                <h3>Delivery</h3>
+                <p>Convenient pickup and delivery options to fit your schedule.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Fill out the form below to contact us regarding your laundry needs.</p>
+        <form class="contact-form" id="contactForm" action="submit_form.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="success-message" id="successMessage">
+            Successfully Submitted
+        </div>
+    </div>
+
+    <!-- Rest of the code remains the same -->
+
+    <script>
+        // JavaScript to switch between home and contact sections
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.container').forEach(container => {
+                    container.style.display = 'none';
+                });
+                document.getElementById(target).style.display = 'block';
+            });
+        });
+
+        // JavaScript to show success message after form submission
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            // Prevent default form submission
+            event.preventDefault();
+            
+            // Show success message
+            document.getElementById("successMessage").style.display = "block";
+        });
+    </script>
+</body>
+</html>
